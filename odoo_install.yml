@@ -1,0 +1,21 @@
+---
+
+# apt update && apt upgrade on all servers
+- hosts: all
+  become: yes
+  pre_tasks:
+
+  - name: install updates & upgrades
+    apt: 
+      update_cache: yes
+      upgrade: yes
+      autoremove: yes
+
+- hosts: postgre_servers
+  become: yes
+  tasks:
+
+  - name: install postgre server
+    apt:
+      name: postgresql-12
+      state: latest

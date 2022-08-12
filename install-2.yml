@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  become: yes
+  tasks:
+
+  - name: update repo index and install apache2 and php 
+    apt:
+      update_cache: yes
+      name: 
+        - apache2
+        - libapache2-mod-php
+      state: latest
+     
